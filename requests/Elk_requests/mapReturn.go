@@ -3,7 +3,7 @@ package Elk_requests
 type request struct {
 }
 
-func mapReturn(funcName string) string {
+func MapReturn(funcName string) string {
 
 	var requestMap = map[string]string{
 		"mining1860": `{
@@ -15,92 +15,87 @@ func mapReturn(funcName string) string {
 "qqc",   //qqc 1860
 "dE",   //Дата
 "Du",   //код ОКМУ
-"pID"
+"pID"   //Отделение
 ],
 "query": {
     "bool": {
         "filter": {
             "bool": {
-                "must": {
-                    "bool": {
-                        "should": [
-                    {"match": {"Du": "A04.01.001"}},
-                    {"match": {"Du": "A04.06.001"}},
-                    {"match": {"Du": "A04.06.002"}},
-                    {"match": {"Du": "A04.06.004"}},
-                    {"match": {"Du": "A04.06.005"}},
-                    {"match": {"Du": "A04.10.002"}},
-                    {"match": {"Du": "A04.10.002.010"}},
-                    {"match": {"Du": "A04.10.009"}},
-                    {"match": {"Du": "A04.12.001.002"}},
-                    {"match": {"Du": "A04.12.006.001"}},
-                    {"match": {"Du": "A04.12.011"}},
-                    {"match": {"Du": "A04.12.013"}},
-                    {"match": {"Du": "A04.12.048"}},
-                    {"match": {"Du": "A04.14.001"}},
-                    {"match": {"Du": "A04.14.003"}},
-                    {"match": {"Du": "A04.15.001"}},
-                    {"match": {"Du": "A04.20.001"}},
-                    {"match": {"Du": "A04.20.001.002"}},
-                    {"match": {"Du": "A04.20.001.003"}},
-                    {"match": {"Du": "A04.20.002"}},
-                    {"match": {"Du": "A04.20.003"}},
-                    {"match": {"Du": "A04.20.011"}},
-                    {"match": {"Du": "A04.20.012"}},
-                    {"match": {"Du": "A04.20.013"}},
-                    {"match": {"Du": "A04.21.001"}},
-                    {"match": {"Du": "A04.21.001.002"}},
-                    {"match": {"Du": "A04.21.001.003"}},
-                    {"match": {"Du": "A04.21.002"}},
-                    {"match": {"Du": "A04.21.002.001"}},
-                    {"match": {"Du": "A04.21.003"}},
-                    {"match": {"Du": "A04.21.011"}},
-                    {"match": {"Du": "A04.21.012"}},
-                    {"match": {"Du": "A04.21.013"}},
-                    {"match": {"Du": "A04.21.014"}},
-                    {"match": {"Du": "A04.21.015"}},
-                    {"match": {"Du": "A04.21.016"}},
-                    {"match": {"Du": "A04.22.001"}},
-                    {"match": {"Du": "A04.22.002"}},
-                    {"match": {"Du": "A04.22.004"}},
-                    {"match": {"Du": "A04.22.008"}},
-                    {"match": {"Du": "A04.22.010"}},
-                    {"match": {"Du": "A04.22.011"}},
-                    {"match": {"Du": "A04.24.001"}},
-                    {"match": {"Du": "A04.26.001.001"}},
-                    {"match": {"Du": "A04.26.006"}},
-                    {"match": {"Du": "A04.28.001"}},
-                    {"match": {"Du": "A04.28.002.003"}},
-                    {"match": {"Du": "A04.31.004"}},
-                    {"match": {"Du": "A04.31.005"}},
-                    {"match": {"Du": "A04.31.006"}},
-                    {"match": {"Du": "A04.31.010"}},
-                    {"match": {"Du": "A04.31.012"}},
-                    {"match": {"Du": "A06.26.010.001"}},
-                    {"match": {"Du": "A06.26.010.002"}},
-                    {"match": {"Du": "B03.001.005"}},
-                    {"match": {"Du": "B03.058.34"}},
-                    {"match": {"Du": "B03.058.35"}}
-                ]}},
                 "filter": {
                     "bool": {
-                        "filter": [
-                            {"range":{"dE":{"gte":####}}},
-                            {"range":{"dE":{"lte":****}}}
-                        ],
-                        "must": {
-                            "bool": {
-                                "should": [
-                                    {"match": {"pID": "оУЗД"}}
-                                ]
-                            }
-                        }
+                        "should": [
+                            {"term": {"pID.keyword": "оУЗД"}}
+                        ]
                     }
-                }
+                },
+                "must": [
+                    {"range":{"dE":{"gte":####}}},
+                    {"range":{"dE":{"lte":****}}}
+                ],
+                "minimum_should_match": 1,
+                "should": [
+                    {"term": {"Du.keyword": "A04.01.001"}},
+                    {"term": {"Du.keyword": "A04.06.001"}},
+                    {"term": {"Du.keyword": "A04.06.002"}},
+                    {"term": {"Du.keyword": "A04.06.004"}},
+                    {"term": {"Du.keyword": "A04.06.005"}},
+                    {"term": {"Du.keyword": "A04.10.002"}},
+                    {"term": {"Du.keyword": "A04.10.002.010"}},
+                    {"term": {"Du.keyword": "A04.10.009"}},
+                    {"term": {"Du.keyword": "A04.12.001.002"}},
+                    {"term": {"Du.keyword": "A04.12.006.001"}},
+                    {"term": {"Du.keyword": "A04.12.011"}},
+                    {"term": {"Du.keyword": "A04.12.013"}},
+                    {"term": {"Du.keyword": "A04.12.048"}},
+                    {"term": {"Du.keyword": "A04.14.001"}},
+                    {"term": {"Du.keyword": "A04.14.003"}},
+                    {"term": {"Du.keyword": "A04.15.001"}},
+                    {"term": {"Du.keyword": "A04.20.001"}},
+                    {"term": {"Du.keyword": "A04.20.001.002"}},
+                    {"term": {"Du.keyword": "A04.20.001.003"}},
+                    {"term": {"Du.keyword": "A04.20.002"}},
+                    {"term": {"Du.keyword": "A04.20.003"}},
+                    {"term": {"Du.keyword": "A04.20.011"}},
+                    {"term": {"Du.keyword": "A04.20.012"}},
+                    {"term": {"Du.keyword": "A04.20.013"}},
+                    {"term": {"Du.keyword": "A04.21.001"}},
+                    {"term": {"Du.keyword": "A04.21.001.002"}},
+                    {"term": {"Du.keyword": "A04.21.001.003"}},
+                    {"term": {"Du.keyword": "A04.21.002"}},
+                    {"term": {"Du.keyword": "A04.21.002.001"}},
+                    {"term": {"Du.keyword": "A04.21.003"}},
+                    {"term": {"Du.keyword": "A04.21.011"}},
+                    {"term": {"Du.keyword": "A04.21.012"}},
+                    {"term": {"Du.keyword": "A04.21.013"}},
+                    {"term": {"Du.keyword": "A04.21.014"}},
+                    {"term": {"Du.keyword": "A04.21.015"}},
+                    {"term": {"Du.keyword": "A04.21.016"}},
+                    {"term": {"Du.keyword": "A04.22.001"}},
+                    {"term": {"Du.keyword": "A04.22.002"}},
+                    {"term": {"Du.keyword": "A04.22.004"}},
+                    {"term": {"Du.keyword": "A04.22.008"}},
+                    {"term": {"Du.keyword": "A04.22.010"}},
+                    {"term": {"Du.keyword": "A04.22.011"}},
+                    {"term": {"Du.keyword": "A04.24.001"}},
+                    {"term": {"Du.keyword": "A04.26.001.001"}},
+                    {"term": {"Du.keyword": "A04.26.006"}},
+                    {"term": {"Du.keyword": "A04.28.001"}},
+                    {"term": {"Du.keyword": "A04.28.002.003"}},
+                    {"term": {"Du.keyword": "A04.31.004"}},
+                    {"term": {"Du.keyword": "A04.31.005"}},
+                    {"term": {"Du.keyword": "A04.31.006"}},
+                    {"term": {"Du.keyword": "A04.31.010"}},
+                    {"term": {"Du.keyword": "A04.31.012"}},
+                    {"term": {"Du.keyword": "A06.26.010.001"}},
+                    {"term": {"Du.keyword": "A06.26.010.002"}},
+                    {"term": {"Du.keyword": "B03.001.005"}},
+                    {"term": {"Du.keyword": "B03.058.34"}},
+                    {"term": {"Du.keyword": "B03.058.35"}}
+                ]
             }
         }
-        }
     }
+}
 }`,
 
 		"mining174": `{
@@ -124,47 +119,65 @@ func mapReturn(funcName string) string {
 }
 }`,
 		"get186": `{
-"size": 10000,
-"_source": [
-    "qqc",   //id обьекта
+  "size": 10000,
+  "_source": [
+     "qqc",   //id обьекта
     "pANdop",   //Состояние_назначения
     "puR",   //Должность_Ресурс
-    "pAE"   //Дата выполнения
-],
-"query": {
+    "pAE"  
+  ],
+  "query": {
     "bool": {
-        "filter": {
-            "term": {"qqc.keyword": "####"}
+      "filter": {
+        "bool": {
+          "should": [
+            ####
+          ]
         }
+      }
     }
-}
+  }
 }`,
 		"get153": `{
- "_source": [
-  "qqc",
-  "pB",
-  "pI",
-"pJ"
-   ],
+  "size": 10000,
+  "_source": [
+    "pB",
+    "qqc",
+    "pJ",
+    "pI"
+  ],
   "query": {
-    "term": {
-      "qqc.keyword": "####"
+    "bool": {
+        "filter": {
+            "bool": {
+                "should": [
+                    ####
+                ]
+            }
+        }
     }
   }
 }
 `,
 
 		"get83": `{
-"_source": [
-"pu",
-"pu1",
-"Du"
-],
-"query": {
-"match": {
-"Du.keyword": "####"
-}
-}
+  "size": 10000,
+  "_source": [
+    "pu",
+    "pu1",
+	"Du"
+  ],
+  "query": {
+    "bool": {
+        "filter": {
+            "bool": {
+                "should": [
+                    ####
+                ]
+            }
+        }
+    }
+  }
 }`,
 
 		"consistedPatients": `{

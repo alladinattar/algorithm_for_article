@@ -1,6 +1,6 @@
 package Elk_requests
 
-import (
+/*import (
 	"log"
 	"strings"
 	"time"
@@ -9,7 +9,7 @@ import (
 func ServiceUnitMining(startDate string, finishDate string) {
 	var ServicesUnit []ServiceUnit //массив для требуемых объектов
 	var Services []ServiceInfo     //массив для 1860 объектов
-	Services = Mining1860_2(Services, startDate, finishDate)
+	Services = Mining1860(Services, startDate, finishDate)
 	layout := "20060102" //требуется для создания объекта time
 	//итерируемся по массиву данных, полученных из эластика
 	for _, service := range Services {
@@ -57,3 +57,4 @@ func ServiceUnitMining(startDate string, finishDate string) {
 	}
 	log.Println("Number of objects:",len(ServicesUnit))
 }
+*/

@@ -2,12 +2,12 @@ package Elk_requests
 
 import (
 	"encoding/json"
-	"github.com/Go-ELK-API/requests"
+	"github.com/algorithm_for_article/requests"
 	"log"
 )
 
 func GetConsistedPatients(array []ConsistedPatient) []ConsistedPatient {
-	res := requests.GetData("/174/_search", mapReturn("consistedPatients"))
+	res := requests.GetData("/174/_search", MapReturn("consistedPatients"))
 	data := Message174{}
 	err := json.Unmarshal([]byte(res), &data)
 	if err != nil {
@@ -25,7 +25,7 @@ func GetConsistedPatients(array []ConsistedPatient) []ConsistedPatient {
 }
 
 func GetServicesByName(array []ServiceInfo, serviceName string) []ServiceInfo {
-	res := requests.GetData("/1860/_search", mapReturn(serviceName))
+	res := requests.GetData("/1860/_search", MapReturn(serviceName))
 	data := Message1860{}
 	err := json.Unmarshal([]byte(res), &data)
 	if err != nil {

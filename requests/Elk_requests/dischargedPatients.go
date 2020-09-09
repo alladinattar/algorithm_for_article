@@ -1,6 +1,7 @@
 package Elk_requests
 
-import (
+
+/*import (
 	"encoding/json"
 	"fmt"
 	"strings"
@@ -37,3 +38,4 @@ func DischargeMining() {
 
 	}
 }
+*/
